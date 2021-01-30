@@ -14,8 +14,8 @@ FORMAT = "%20s  %4s  %5s  %5s  %5s  %5s"
 @click.option('--yml-food', default="", help="Yaml file with food details")
 @click.option('--yml-recipe', default="", help="Yaml file with recipe details")
 def main(yml_food, yml_recipe):
-    food = yaml.load(open(yml_food).read())
-    recipe = yaml.load(open(yml_recipe).read())
+    food = yaml.safe_load(open(yml_food).read())
+    recipe = yaml.safe_load(open(yml_recipe).read())
 
     persons = int(recipe['persons'])
     print("\nRezept: %s für %d Person(en)" % (recipe['name'], persons))
